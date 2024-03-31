@@ -1,0 +1,128 @@
+1. Го користев мојот веќе постоечки профил на Git
+$ git config --global user.name "Andrea-444"
+$ git config --global user.email andrea.stevanoska2@gmail.com
+Конфигурација на авторот - мое корисничко име и емаил кои ќе бидат проследени со секој  Git commits.
+2. /
+3. slika1
+4.
+$ mkdir SI_2024_lab1_226001
+$ cd SI_2024_lab1_226001
+$ git init
+5.
+$ git remote add origin git@github.com:Andrea-444/SI_2024_lab1_226001.git
+$ git remote -v
+origin  git@github.com:Andrea-444/SI_2024_lab1_226001.git (fetch)
+origin  git@github.com:Andrea-444/SI_2024_lab1_226001.git (push)
+6.
+$ nano README.md
+$ git add README.md
+$ git commit -m "Initial commit"
+7.
+Ги презедов фајловите и ги искористив следните команди за да ги комитнам:
+$ git add --all
+$ git commit -m "Add starter code"
+8. 
+$ git push --set-upstream origin master
+$ git push origin
+Everything up-to-date
+9.
+$ git checkout -b bug1
+$ git checkout master
+$ git checkout -b bug2
+10.
+$ git checkout bug1
+11.
+$ nano SILab1_1.java
+$ git commit -a -m "Fix wrong condition in filterOddLengthStrings"
+12.
+$ git checkout bug2
+13.
+$ nano SILab1_2.java
+$ git commit -a -m "Fix wrong condition in makeBigStringFrom"
+14.
+$ git checkout bug1
+15.
+$ nano SILab1Main.java
+$ git commit -a -m "Call method filterOddLengthStrings in main class"
+16.
+$ git checkout bug2
+17.
+$ nano SILab1Main.java
+$ git commit -a -m "Call method makeBigStringFrom in main class"
+18.
+$ git push origin --all
+19.
+$ git checkout master
+20.
+$ git merge bug1
+Updating e421891..c7d629f
+Fast-forward
+ SILab1Main.java | 2 +-
+ SILab1_1.java   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+21.
+$ git push origin master
+22.
+$ git checkout bug2
+23.
+Тука се појавува конфликт кој гласи вака:
+$ git rebase master
+Auto-merging SILab1Main.java
+CONFLICT (content): Merge conflict in SILab1Main.java
+error: could not apply 0cf836c... Call method makeBigStringFrom in main class
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 0cf836c... Call method makeBigStringFrom in main class
+
+Go resiv problemot na sledniot nacin:
+
+$ nano SILab1Main.java
+$ git add SILab1Main.java
+$ git rebase --continue
+[detached HEAD 21195ee] Call method makeBigStringFrom in main class
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+Successfully rebased and updated refs/heads/bug2.
+
+slika2
+
+24.
+$ git checkout master
+25.
+$ git merge bug2
+Updating c7d629f..21195ee
+Fast-forward
+ SILab1Main.java | 5 +++--
+ SILab1_2.java   | 4 ++--
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+26.
+$ git push origin
+
+27.
+$ git push origin --all
+To github.com:Andrea-444/SI_2024_lab1_226001.git
+ ! [rejected]        bug2 -> bug2 (non-fast-forward)
+error: failed to push some refs to 'github.com:Andrea-444/SI_2024_lab1_226001.git'
+hint: Updates were rejected because a pushed branch tip is behind its remote
+hint: counterpart. If you want to integrate the remote changes, use 'git pull'
+hint: before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+$ git push origin bug2 --force
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:Andrea-444/SI_2024_lab1_226001.git
+ + 0cf836c...21195ee bug2 -> bug2 (forced update)
+
+
+
+
+
+
+
+
+
+
+
+
