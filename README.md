@@ -1,1 +1,1 @@
-Author: Andrea Stevanoska 226001
+ Andrea Stevanoska 226001
